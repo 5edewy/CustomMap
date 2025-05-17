@@ -1,79 +1,107 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# MapTest React Native Application
 
-# Getting Started
+## Installation
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+1. Install dependencies using yarn or npm:
 
-## Step 1: Start the Metro Server
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+2. For Google API usage, place your private key in the `.env` file located in the root of the project.  
+   You can update or change this key as needed.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+3. If testing on iOS, update the Google API key in `ios/maptest/AppDelegate.mm`.
 
-```bash
-# using npm
-npm start
+4. Run the app on your desired platform:
+   - iOS:
+     ```bash
+     npx react-native run-ios
+     or open with Xcode ..
+     ```
+   - Android:
+     ```bash
+     npx react-native run-android
+     ```
 
-# OR using Yarn
-yarn start
-```
+## Features
 
-## Step 2: Start your Application
+### Custom Map Component
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- Automatically detects the current user location.
+- Search for new places with autocomplete suggestions.
+- Map view fits to the selected location.
+- When clearing the search input, the search history appears.
+- Ability to delete old search history entries.
+- Drag the map screen to move the pin; the app detects the dragged position and fetches related data.
 
-### For Android
+### Theme Module
 
-```bash
-# using npm
-npm run android
+- Provides main colors used throughout the app.
+- Includes modules for responsive dimensions such as scale, width, and height to ensure responsiveness.
 
-# OR using Yarn
-yarn android
-```
+### Custom UI Components
 
-### For iOS
+- Custom-built `AppTextInput` component.
+- Global memoized `AppText` component for optimized text rendering.
+- Global stylesheet for consistent app styling.
 
-```bash
-# using npm
-npm run ios
+### State Management and Storage
 
-# OR using Yarn
-yarn ios
-```
+- Uses [MMKV](https://github.com/mrousavy/react-native-mmkv) for storage instead of AsyncStorage for better performance.
+- Uses [Zustand](https://github.com/pmndrs/zustand) as the global state manager.
+- Both MMKV and Zustand are used to persist search history and other state data.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Navigation
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+- Implements the latest React Navigation format for smooth and modern navigation experience.
 
-## Step 3: Modifying your App
+## Screenshots
 
-Now that you have successfully run the app, let's modify it.
+### User Location Detected :
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+<img src="./src/components/assets/images/user_location.png" width="400"/>
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### Search History
 
-## Congratulations! :tada:
+<img src="./src/components/assets/images/recent_search.png" width="400"/>
 
-You've successfully run and modified your React Native App. :partying_face:
+### Auto Complete
 
-### Now what?
+<img src="./src/components/assets/images/auto_suggest.png" width="400"/>
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## Project Structure Overview
 
-# Troubleshooting
+- `src/components/common/`  
+  Contains reusable UI components such as `AppTextInput`, `AppText`, `CustomMapView`, and `MapList`.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- `src/config/theme/`  
+  Contains theme-related files including colors, images, and responsive metrics.
 
-# Learn More
+- `src/navigation/`  
+  Contains navigation setup including `MainNavigator.tsx`.
 
-To learn more about React Native, take a look at the following resources:
+- `src/screens/`  
+  Contains screen components like `HomeScreen.tsx`.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- `src/store/`  
+  Contains state management logic using Zustand and MMKV storage.
+
+- `src/utils/`  
+  Contains utility functions related to location and other helpers.
+
+- `android/` and `ios/`  
+  Native platform-specific code and configuration.
+
+## Notes
+
+- Remember to keep your Google API keys secure and do not commit them to public repositories.
+- The app is optimized for performance using MMKV and memoization techniques.
+- The map component provides a rich user experience with location detection, search, and drag-to-select features.
+
+## License
+
+Mohamed Khedewy
+Senior React Native Developer
