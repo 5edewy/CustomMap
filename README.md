@@ -95,12 +95,6 @@
 - `android/` and `ios/`  
   Native platform-specific code and configuration.
 
-## Notes
-
-- Remember to keep your Google API keys secure and do not commit them to public repositories.
-- The app is optimized for performance using MMKV and memoization techniques.
-- The map component provides a rich user experience with location detection, search, and drag-to-select features.
-
 ## License
 
 Mohamed Khedewy
